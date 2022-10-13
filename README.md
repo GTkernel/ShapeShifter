@@ -43,18 +43,18 @@ $ kubectl create -f ss.yml
 
 |File |  Purpose  |Input parameter(s) |
 |-----|-----------|-------------------|
-|`create_queue.sh`| create a queue with specific shape rules |interface, dest IP, unique ID of queue, bitrate in mbit, burst size in kbit, latency in millisec|
-|`create_fair_queue.sh`||*ditto*|
-|`create_single_queue.sh`||interface, bitrate in mbit, burst size in kbit, latency in millisec|
-|`lc_queue_example.sh`||interface|
-|`ls_queue_example.sh`||*ditto*|
-|`remove_qdisc.sh`||*ditto*|
-|`reset_interface.sh`||*ditto*|
+|`create_queue.sh`| create a queue with specific shape rules | interface, dest IP, unique ID of queue, bitrate in mbit, burst size in kbit, latency in msec|
+|`create_single_queue.sh`| same as above, but only expect to create one queue, so no need to specify IP and ID | interface, bitrate in mbit, burst size in kbit, latency in msec|
+|`create_fair_queue.sh`| create a fair queue |interface, dest IP, unique ID of queue|
+|`lc_queue_example.sh`| create single Lc queue with our example parameters |interface|
+|`ls_queue_example.sh`| create single Ls queue with our example parameters |*ditto*|
+|`reset_interface.sh`| clean the shape rules |*ditto*|
+|`remove_qdisc.sh`| remove whole qdisc functions on interface, need to attach it again before creating queues, can run `reset_interface.sh` to get it back |*ditto*|
 |`show_interface.sh`||*ditto*|
-|`add_delay.sh`/`delete_delay.sh`|Add certain number of millisecond delay on a specific network interface|*ditto*|
+|`add_delay.sh`/`delete_delay.sh`| add/delete certain number of millisecond delay on a specific network interface|*ditto*|
 
 ShapeShifter requires to shape both ingress and egress traffics.
-So, we will need to call tool twice for the traffics separately.
+So, we will need to run tool twice for the traffics separately.
 
 
 ## MEC application usecases in paper

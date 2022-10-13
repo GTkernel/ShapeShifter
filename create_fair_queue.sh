@@ -17,9 +17,6 @@
 INTERFACE=$1
 IP=$2
 ID=$3
-RATE_mb=$4
-BURST_kb=$5
-LATENCY_ms=$6
 
 echo "======== Before queue is created ========"
 tc qdisc show dev $INTERFACE
