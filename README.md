@@ -56,9 +56,27 @@ $ kubectl create -f ss.yml
 ShapeShifter requires to shape both ingress and egress traffics.
 So, we will need to run tool twice for the traffics separately.
 
-As describe in the paper's section *VI. IMPLEMENTATION* and *Fig. 6*, 
+As describe in the paper's section **VI. IMPLEMENTATION** and **Fig. 6**, 
 we shape the ingress traffic of MEC service at RAN node, and shape its egress traffic on MEC node.
 While the ingress traffics on RAN node would be several of them, duo to several MEC service, we used to run `create_queue.sh` to specify each of them one by one; on the other hand, the egress traffic would be set on the vNIC of the MEC server, we can use `create_single_queue.sh`, since that vNIC is dedicated for this application.
+
+Here is the example for calling the tool:
+
+```
+// show the name of ShapeShifter tool in control plane
+$ kubectl get pod -n kube-system
+NAME                             READY   STATUS    RESTARTS       AGE
+:
+ss-mec-5lcb2                     1/1     Running   0              3m
+ss-vran-x68ms                    1/1     Running   0              3m
+:
+
+// apply ingress traffic of MEC service on RAN
+$ kubectl exec -it -n kube-system ss-vran-x68ms -- sh ./create_queue.sh weave 10.32.0.2 1 1 10 1
+
+// apply egress traffic by the Lc example -- sh ./lc_queue_example.sh vethwepl31c95c2
+
+```
 
 ## MEC application usecases in paper
 
