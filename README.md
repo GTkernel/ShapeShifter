@@ -15,7 +15,17 @@ The instruction of our MEC testbed is covered as following:
 * vRAN, the LTE testbed by [NextEPC](https://github.com/GTkernel/nextepc)'s core network; 
 and [SrsRAN](https://github.com/GTkernel/srsRAN)'s eNB and UE.
 
-### Docker image creation and K8s file
+### Docker image creation and K8s deployment
+
+Dockerfile and Kubernetes configuration file, `./ss.yml`, helps to deploy tools in
+the space of control plane. You can take steps below as reference:
+
+```
+// cd to the root of this repo, build the image
+$ docker build -t ss .
+
+
+```
 
 ### Introduction of tools (scripts) 
 
@@ -23,5 +33,20 @@ and [SrsRAN](https://github.com/GTkernel/srsRAN)'s eNB and UE.
 
 ## Paper reference
 
-**ShapeShifter: Resolving the Hidden Latency Contention Problem in MEC**
+```bib
+@inproceedings{shapeshifter,
+  author    = {Valentin Rakavic
+               Ke{-}Jou Hsu and
+               Ketan Bhardwaj and
+               Ada Gavrilovska and
+               Liljana Gavrilovska},
+  title     = {{ShapeShifter: Resolving the Hidden Latency Contention Problem in MEC}},
+  booktitle = {Proceedings of the 7th {ACM/IEEE} Symposium on Edge Computing, {SEC}
+               2022, Bellevue, WA, USA, December},
+  publisher = {{ACM/IEEE}},
+  year      = {2022},
+  url       = {},
+  doi       = {}
+}
+```
 
