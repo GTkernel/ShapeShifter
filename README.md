@@ -50,12 +50,15 @@ $ kubectl create -f ss.yml
 |`ls_queue_example.sh`| create single Ls queue with our example parameters |*ditto*|
 |`reset_interface.sh`| clean the shape rules |*ditto*|
 |`remove_qdisc.sh`| remove whole qdisc functions on interface, need to attach it again before creating queues, can run `reset_interface.sh` to get it back |*ditto*|
-|`show_interface.sh`||*ditto*|
+|`show_interface.sh`| show the queues on the interface |*ditto*|
 |`add_delay.sh`/`delete_delay.sh`| add/delete certain number of millisecond delay on a specific network interface|*ditto*|
 
 ShapeShifter requires to shape both ingress and egress traffics.
 So, we will need to run tool twice for the traffics separately.
 
+As describe in the paper's section *VI. IMPLEMENTATION* and *Fig. 6*, 
+we shape the ingress traffic of MEC service at RAN node, and shape its egress traffic on MEC node.
+While the ingress traffics on RAN node would be several of them, duo to several MEC service, we used to run `create_queue.sh` to specify each of them one by one; on the other hand, the egress traffic would be set on the vNIC of the MEC server, we can use `create_single_queue.sh`, since that vNIC is dedicated for this application.
 
 ## MEC application usecases in paper
 
