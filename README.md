@@ -41,12 +41,26 @@ $ kubectl create -f ss.yml
 
 ### Introduction of tools (scripts) 
 
-|File/Reversed file |  Purpose  |Input parameter(s) |
-|-------------------|-----------|-------------------|
-|`add_delay.sh`/`delete_delay.sh`|Add certain number of millisecond delay on a specific network interface|interface|
+|File |  Purpose  |Input parameter(s) |
+|-----|-----------|-------------------|
+|`create_queue.sh`| create a queue with specific shape rules |interface, dest IP, unique ID of queue, bitrate in mbit, burst size in kbit, latency in millisec|
+|`create_fair_queue.sh`||*ditto*|
+|`create_single_queue.sh`||interface, bitrate in mbit, burst size in kbit, latency in millisec|
+|`lc_queue_example.sh`||interface|
+|`ls_queue_example.sh`||*ditto*|
+|`remove_qdisc.sh`||*ditto*|
+|`reset_interface.sh`||*ditto*|
+|`show_interface.sh`||*ditto*|
+|`add_delay.sh`/`delete_delay.sh`|Add certain number of millisecond delay on a specific network interface|*ditto*|
+
+ShapeShifter requires to shape both ingress and egress traffics.
+So, we will need to call tool twice for the traffics separately.
 
 
 ## MEC application usecases in paper
+
+* [Streamer](https://github.com/GTkernel/streamer): The latency-sensitive (Ls) use case, tagged as *ML*.
+* [ROS](https://github.com/GTkernel/ros): The latency-critical (Lc) use case, tagged as *IA*.
 
 ## Paper reference
 
