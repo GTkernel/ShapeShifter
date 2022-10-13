@@ -18,13 +18,21 @@ and [SrsRAN](https://github.com/GTkernel/srsRAN)'s eNB and UE.
 ### Docker image creation and K8s deployment
 
 Dockerfile and Kubernetes configuration file, `./ss.yml`, helps to deploy tools in
-the space of control plane. You can take steps below as reference:
+the space of control plane. 
 
-```
-// cd to the root of this repo, build the image
+In the K8s configuration file, 
+be careful of the indicated node (`nodeSelector`) for deployment, the name of image,
+and the CNI gateway interface (`weave` in command).
+You should change them to fit your environment.
+
+You can take steps below as reference:
+
+```bash
+// cd to the root directory of this repo, build the image
 $ docker build -t ss .
 
-
+// deploy shape enforcer tools
+$ kubectl create -f ss.yml
 ```
 
 ### Introduction of tools (scripts) 
