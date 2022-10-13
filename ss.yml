@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shapeshifter
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      func: ss
+  template:
+    metadata:
+      labels:
+        func: ss
+    spec:
+      hostNetwork: true
+      nodeSelector:
+        corenet: "v-ran"
+      containers:
+      - name: shapeshifter
+        image: ss:latest
+        imagePullPolicy: Never
+        command:
+        - /bin/sh
+        - -c
+        - "sleep 3600"
+        lifecycle:
+          postStart:
+            exec:
+              command: 
+              - /bin/sh
+              - -c
+              - "tc qdisc add dev weave root handle 1: prio"
+          preStop:        
+            exec:
+              command: 
+              - /bin/sh
+              - -c
+              - "tc qdisc del dev weave root"
+        securityContext:
+          privileged: true
