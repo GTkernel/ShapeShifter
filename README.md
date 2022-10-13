@@ -74,7 +74,8 @@ ss-vran-x68ms                    1/1     Running   0              3m
 // apply ingress traffic of MEC service on RAN
 $ kubectl exec -it -n kube-system ss-vran-x68ms -- sh ./create_queue.sh weave 10.32.0.2 1 1 10 1
 
-// apply egress traffic by the Lc example -- sh ./lc_queue_example.sh vethwepl31c95c2
+// apply egress traffic by the Lc example 
+$ kubectl exec -it -n kube-system ss-mec-5lcb2 -- sh ./lc_queue_example.sh vethwepl31c95c2
 
 ```
 
