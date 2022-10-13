@@ -24,10 +24,13 @@ In the K8s configuration file,
 be careful of the indicated node (`nodeSelector`) for deployment, the name of image,
 and the CNI gateway interface (`weave` in command).
 You should change them to fit your environment.
+Also, you can adjust other setup like the running time (default: 1h), 
+preprocessing and post processing, etc.
+
 
 You can take steps below as reference:
 
-```bash
+```
 // cd to the root directory of this repo, build the image
 $ docker build -t ss .
 
@@ -35,7 +38,13 @@ $ docker build -t ss .
 $ kubectl create -f ss.yml
 ```
 
+
 ### Introduction of tools (scripts) 
+
+|File/Reversed file |  Purpose  |Input parameter(s) |
+|-------------------|-----------|-------------------|
+|`add_delay.sh`/`delete_delay.sh`|Add certain number of millisecond delay on a specific network interface|interface|
+
 
 ## MEC application usecases in paper
 

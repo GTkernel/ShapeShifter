@@ -14,13 +14,12 @@
 ##   See the License for the specific language governing permissions and
 ##   limitations under the License.
 
-INTERFACE=weave
-IP=$1
-ID=$2
-RATE_mb=$3
-BURST_kb=$4
-LATENCY_ms=$5
-
+INTERFACE=$1
+IP=$2
+ID=$3
+RATE_mb=$4
+BURST_kb=$5
+LATENCY_ms=$6
 
 echo "======== Before queue is created ========"
 tc qdisc show dev $INTERFACE

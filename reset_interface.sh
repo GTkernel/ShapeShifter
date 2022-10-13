@@ -14,7 +14,7 @@
 ##   See the License for the specific language governing permissions and
 ##   limitations under the License.
 
-INTERFACE=weave
+INTERFACE=$1
 
 # back to initial state
 echo "======== Before queues are cleaned ========"
