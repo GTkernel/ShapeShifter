@@ -98,8 +98,8 @@ $ kubectl exec -it -n kube-system ss-mec-5lcb2 -- sh ./lc_queue_example.sh vethw
                2022, Bellevue, WA, USA, December},
   publisher = {{ACM/IEEE}},
   year      = {2022},
-  url       = {},
-  doi       = {}
+  url       = {https://doi.org/10.1109/SEC54971.2022.00026},
+  doi       = {10.1109/SEC54971.2022.00026}
 }
 ```
 
